@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: DataTableDemo(),
+    );
+  }
+}
+
+class User {
+  String firstName;
+  String lastName;
+
+  User({this.firstName, this.lastName});
+
+  static List<User> getUsers() {
+    return <User>[
+      User(firstName: "Paul", lastName: "Rudd"),
+      User(firstName: "Owen", lastName: "Wilson"),
+      User(firstName: "Jonah", lastName: "Hill"),
+    ];
+  }
+}
+
+class DataTableDemo extends StatefulWidget {
+  DataTableDemo() : super();
+
+  final String title = "Data Table Flutter Demo";
+
+  @override
+  DataTableDemoState createState() => DataTableDemoState();
+}
+
+class DataTableDemoState extends State<DataTableDemo> {
+  List<User> users;
+  List<User> selectedUser;
+
+  @override
+  void initState() {
+    users = User.getUsers();
+    selectedUser = List.from(users);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('DropdownButton in DataTable'),
+        ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: DataTable(
+            columns: [
+              DataColumn(
+                label: Text("FIRST NAME"),
+                numeric: false,
+                tooltip: "This is First Name",
+              ),
+              DataColumn(
+                label: Text("LAST NAME"),
+                numeric: false,
+                tooltip: "This is Last Name",
+              ),
+            ],
+            rows: selectedUser.asMap().entries.map((user) {
+              int idx = user.key;
+              print(idx);
+              return DataRow(cells: [
+                DataCell(
+                  Text(selectedUser[idx].firstName),
+                  onTap: () {
+                    print('Selected firstName: ${selectedUser[idx].firstName}');
+                  },
+                ),
+                DataCell(DropdownButton<User>(
+                  value: selectedUser[idx],
+                  onChanged: (User newUser) {
+                    setState(() {
+                      selectedUser[idx] = newUser;
+                    });
+                  },
+                  items: users.map<DropdownMenuItem<User>>((User value) {
+                    return DropdownMenuItem<User>(
+                      value: value,
+                      child: Text(value.lastName),
+                    );
+                  }).toList(),
+                ))
+              ]);
+            }).toList(),
+          ),
+        ));
+  }
+}
