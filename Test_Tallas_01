@@ -1,0 +1,121 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: DataTableDemo(),
+    );
+  }
+}
+
+class Tabla1 {
+  String firstName;
+  String lastName;
+  String secName;
+  String terName;
+
+  Tabla1({this.firstName, this.lastName, this.secName, this.terName});
+
+  static List<Tabla1> getTabla1s() {
+    return <Tabla1>[
+      Tabla1(lastName: "42", firstName: "11", secName: '35', terName: '74'),
+      Tabla1(lastName: "44", firstName: "31", secName: '40', terName: '65'),
+      Tabla1(lastName: "46", firstName: "90", secName: '05', terName: '17'),
+      Tabla1(lastName: "48", firstName: "65", secName: '59', terName: '08'),
+      Tabla1(lastName: "50", firstName: "12", secName: '15', terName: '68'),
+      Tabla1(lastName: "52", firstName: "23", secName: '07', terName: '99'),
+      Tabla1(lastName: "54", firstName: "10", secName: '68', terName: '00'),
+      Tabla1(lastName: "56", firstName: "01", secName: '37', terName: '59'),
+    ];
+  }
+}
+
+class DataTableDemo extends StatefulWidget {
+  DataTableDemo() : super();
+
+  final String title = "Data Table Flutter Demo";
+
+  @override
+  DataTableDemoState createState() => DataTableDemoState();
+}
+
+class DataTableDemoState extends State<DataTableDemo> {
+  List<Tabla1> tabla1s;
+  Tabla1 selectedTabla1;
+
+  @override
+  void initState() {
+    tabla1s = Tabla1.getTabla1s();
+    selectedTabla1 = tabla1s.first;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Consumption Table'),
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: DataTable(
+          columns: [
+            DataColumn(
+              label: Text("TALLA"),
+            ),
+            DataColumn(
+              label: Text("PRIM"),
+            ),
+            DataColumn(
+              label: Text("SEG"),
+            ),
+            DataColumn(
+              label: Text("TER"),
+            ),
+          ],
+          rows: [
+            DataRow(
+              cells: [
+                DataCell(
+                  DropdownButton<Tabla1>(
+                    value: selectedTabla1,
+                    onChanged: (Tabla1 newTabla1) {
+                      setState(() {
+                        selectedTabla1 = newTabla1;
+                      });
+                    },
+                    items:
+                        tabla1s.map<DropdownMenuItem<Tabla1>>((Tabla1 value) {
+                      return DropdownMenuItem<Tabla1>(
+                        value: value,
+                        child: Text(value.lastName),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                DataCell(
+                  Text(selectedTabla1.firstName),
+                ),
+                DataCell(
+                  Text(selectedTabla1.secName),
+                ),
+                DataCell(
+                  Text(selectedTabla1.terName),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
