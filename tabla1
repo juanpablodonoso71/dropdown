@@ -1,0 +1,223 @@
+import 'package:flutter/material.dart';
+
+import 'package:tablas_a/suit_table.dart';
+
+
+
+class DataTableDemo extends StatefulWidget {
+  DataTableDemo() : super();
+
+  final String title = "Data Table Flutter Demo";
+
+  @override
+  DataTableDemoState createState() => DataTableDemoState();
+}
+
+class DataTableDemoState extends State<DataTableDemo> {
+  List<Tabla1> tabla1s;
+  Tabla1 selectedTabla1;
+
+  List<Tabla2> tabla2s;
+  Tabla2 selectedTabla2;
+
+  List<Tabla3> tabla3s;
+  Tabla3 selectedTabla3;
+
+  @override
+  void initState() {
+    tabla1s = Tabla1.getTabla1s();
+    selectedTabla1 = tabla1s.first;
+
+    tabla2s = Tabla2.getTabla2s();
+    selectedTabla2 = tabla2s.first;
+
+    tabla3s = Tabla3.getTabla3s();
+    selectedTabla3 = tabla3s.first;
+
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('SUIT (2 BUTTONS)'),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            
+
+            Padding(
+              padding: const EdgeInsets.only(top:40.0),
+              child: Text ('SHORT',style: TextStyle(fontSize: 15),),
+            ),
+
+
+            DataTable(
+              columns: [
+                DataColumn(
+                  label: Text("Size"),
+                ),
+                DataColumn(
+                  label: Text("Plain"),
+                ),
+                DataColumn(
+                  label: Text("Striped"),
+                ),
+                DataColumn(
+                  label: Text("Squared"),
+                ),
+              ],
+              rows: [
+                DataRow(
+                  cells: [
+                    DataCell(
+                      DropdownButton<Tabla1>(
+                        value: selectedTabla1,
+                        onChanged: (Tabla1 newTabla1) {
+                          setState(() {
+                            selectedTabla1 = newTabla1;
+                          });
+                        },
+                        items: tabla1s
+                            .map<DropdownMenuItem<Tabla1>>((Tabla1 value) {
+                          return DropdownMenuItem<Tabla1>(
+                            value: value,
+                            child: Text(value.lastName),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    DataCell(
+                      Text(selectedTabla1.firstName),
+                    ),
+                    DataCell(
+                      Text(selectedTabla1.secName),
+                    ),
+                    DataCell(
+                      Text(selectedTabla1.terName),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top:60.0),
+              child: Text ('REGULAR',style: TextStyle(fontSize: 15),),
+            ),
+
+            DataTable(
+              columns: [
+                DataColumn(
+                  label: Text("Size"),
+                ),
+                DataColumn(
+                  label: Text("Plain"),
+                ),
+                DataColumn(
+                  label: Text("Striped"),
+                ),
+                DataColumn(
+                  label: Text("Squared"),
+                ),
+              ],
+              rows: [
+                DataRow(
+                  cells: [
+                    DataCell(
+                      DropdownButton<Tabla2>(
+                        value: selectedTabla2,
+                        onChanged: (Tabla2 newTabla2) {
+                          setState(() {
+                            selectedTabla2 = newTabla2;
+                          });
+                        },
+                        items: tabla2s
+                            .map<DropdownMenuItem<Tabla2>>((Tabla2 value) {
+                          return DropdownMenuItem<Tabla2>(
+                            value: value,
+                            child: Text(value.lastName),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    DataCell(
+                      Text(selectedTabla2.firstName),
+                    ),
+                    DataCell(
+                      Text(selectedTabla2.secName),
+                    ),
+                    DataCell(
+                      Text(selectedTabla2.terName),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top:60.0),
+              child: Text ('LARGE',style: TextStyle(fontSize: 15),),
+            ),
+
+            DataTable(
+              columns: [
+                DataColumn(
+                  label: Text("Size"),
+                ),
+                DataColumn(
+                  label: Text("Plain"),
+                ),
+                DataColumn(
+                  label: Text("Striped"),
+                ),
+                DataColumn(
+                  label: Text("Squared"),
+                ),
+              ],
+              rows: [
+                DataRow(
+                  cells: [
+                    DataCell(
+                      DropdownButton<Tabla3>(
+                        value: selectedTabla3,
+                        onChanged: (Tabla3 newTabla3) {
+                          setState(() {
+                            selectedTabla3 = newTabla3;
+                          });
+                        },
+                        items: tabla3s
+                            .map<DropdownMenuItem<Tabla3>>((Tabla3 value) {
+                          return DropdownMenuItem<Tabla3>(
+                            value: value,
+                            child: Text(value.lastName),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    DataCell(
+                      Text(selectedTabla3.firstName),
+                    ),
+                    DataCell(
+                      Text(selectedTabla3.secName),
+                    ),
+                    DataCell(
+                      Text(selectedTabla3.terName),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
+
+
+          ],
+        ),
+      ),
+    );
+  }
+}
