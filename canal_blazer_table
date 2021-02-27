@@ -1,0 +1,74 @@
+
+class Tabla1 {
+  String firstName;
+  String lastName;
+  String secName;
+  String terName;
+
+  Tabla1({this.firstName, this.lastName, this.secName, this.terName});
+
+  static List<Tabla1> getTabla1s() {
+    return <Tabla1>[
+      Tabla1(lastName: "44", firstName: "1.64", secName: '1.65', terName: '1.79'),
+      Tabla1(lastName: "46", firstName: "1.67", secName: '1.71', terName: '1.87'),
+      Tabla1(lastName: "48", firstName: "1.70", secName: '1.77', terName: '1.95'),
+      Tabla1(lastName: "50", firstName: "1.73", secName: '1.83', terName: '2.03'),
+      Tabla1(lastName: "52", firstName: "1.76", secName: '1.89', terName: '2.11'),
+      Tabla1(lastName: "54", firstName: "1.79", secName: '1.95', terName: '2.19'),
+      Tabla1(lastName: "56", firstName: "1.82", secName: '2.01', terName: '2.27'),
+      Tabla1(lastName: "58", firstName: "1.85", secName: '2.07', terName: '2.35'),
+      Tabla1(lastName: "60", firstName: "1.88", secName: '2.13', terName: '2.43'),
+      Tabla1(lastName: "62", firstName: "1.91", secName: '2.19', terName: '2.51'),
+    ];
+  }
+}
+
+class Tabla2 {
+  String firstName;
+  String lastName;
+  String secName;
+  String terName;
+
+  Tabla2({this.firstName, this.lastName, this.secName, this.terName});
+
+  static List<Tabla2> getTabla2s() {
+    return <Tabla2>[
+      Tabla2(lastName: "44", firstName: "1.74", secName: '1.72', terName: '1.84'),
+      Tabla2(lastName: "46", firstName: "1.77", secName: '1.78', terName: '1.92'),
+      Tabla2(lastName: "48", firstName: "1.80", secName: '1.84', terName: '2.00'),
+      Tabla2(lastName: "50", firstName: "1.83", secName: '1.90', terName: '2.08'),
+      Tabla2(lastName: "52", firstName: "1.86", secName: '1.96', terName: '2.16'),
+      Tabla2(lastName: "54", firstName: "1.89", secName: '2.02', terName: '2.24'),
+      Tabla2(lastName: "56", firstName: "1.92", secName: '2.08', terName: '2.32'),
+      Tabla2(lastName: "58", firstName: "1.95", secName: '2.14', terName: '2.40'),
+      Tabla2(lastName: "60", firstName: "1.98", secName: '2.20', terName: '2.48'),
+      Tabla2(lastName: "62", firstName: "2.01", secName: '2.26', terName: '2.56'),
+    ];
+  }
+}
+
+
+
+class Tabla3 {
+  String firstName;
+  String lastName;
+  String secName;
+  String terName;
+
+  Tabla3({this.firstName, this.lastName, this.secName, this.terName});
+
+  static List<Tabla3> getTabla3s() {
+    return <Tabla3>[
+      Tabla3(lastName: "44", firstName: "1.76", secName: '1.76', terName: '1.89'),
+      Tabla3(lastName: "46", firstName: "1.79", secName: '1.82', terName: '1.97'),
+      Tabla3(lastName: "48", firstName: "1.82", secName: '1.88', terName: '2.05'),
+      Tabla3(lastName: "50", firstName: "1.85", secName: '1.94', terName: '2.13'),
+      Tabla3(lastName: "52", firstName: "1.88", secName: '2.00', terName: '2.21'),
+      Tabla3(lastName: "54", firstName: "1.91", secName: '2.06', terName: '2.29'),
+      Tabla3(lastName: "56", firstName: "1.94", secName: '2.12', terName: '2.37'),
+      Tabla3(lastName: "58", firstName: "1.97", secName: '2.18', terName: '2.45'),
+      Tabla3(lastName: "60", firstName: "2.00", secName: '2.24', terName: '2.53'),
+      Tabla3(lastName: "62", firstName: "2.03", secName: '2.30', terName: '2.61'),
+    ];
+  }
+}
