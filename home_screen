@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+import 'package:harris/src/pages/components/body.dart';
+import 'package:harris/src/pages/lining_page.dart';
+import 'package:harris/src/pages/video_chest.dart';
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Text(
+            'Harris & Frank',
+            style: TextStyle(
+                fontFamily: 'Copperplate', fontSize: 28.0, color: Colors.grey),
+          ),
+        ),
+      ),
+      body: Dashboard(),
+
+      bottomNavigationBar: MyBottomNavigationBar(),
+      // bottomNavigationBar: BottomNavigationBar(elevation: 1.0,
+      // fixedColor: Colors.brown,),
+    );
+  }
+}
+
+class MyBottomNavigationBar extends StatefulWidget {
+  @override
+  _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
+}
+
+class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+  int _currentIndex = 0;
+
+  void onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      backgroundColor: Colors.grey[300],
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            Navigator.of(context).pushNamed('/Lining');
+            break;
+          case 1:
+            Navigator.of(context).pushNamed('/tablas');
+            break;
+          case 2:
+            Navigator.of(context).pushNamed('/videos');
+        
+        }
+      },
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings),
+          label: 'Table',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.contacts),
+          label: 'Measure',
+        ),
+      ],
+    );
+  }
+}
