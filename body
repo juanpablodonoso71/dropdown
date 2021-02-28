@@ -1,0 +1,118 @@
+import 'package:flutter/material.dart';
+
+class Dashboard extends StatefulWidget {
+  @override
+  _DashboardState createState() {
+    return _DashboardState();
+  }
+}
+
+class _DashboardState extends State<Dashboard> {
+  Material myItems(String heading, String photo) {
+    return Material(
+      //color: Colors.lightGreen,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      //decoration: BoxDecoration(color: Colors.deepPurple),
+                      child: Image.asset(photo, fit: BoxFit.cover),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      heading,
+                      style: TextStyle(
+                          fontFamily: 'Avenir',
+                          fontSize: 12.0,
+                          letterSpacing: 1.4,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(15),
+      child: GridView.count(
+        crossAxisCount: 3,
+        mainAxisSpacing: 50,
+        crossAxisSpacing: 20,
+        childAspectRatio: 0.90,        
+        padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 25.0),
+        children: <Widget>[
+          InkWell(
+            child: myItems("LINING", 'lib/jpg/lining.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Lining');
+            },
+          ),
+          InkWell(
+            child: myItems("SUITS AND BLAZERS", 'lib/jpg/suits.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Suits');
+            },
+          ),
+          InkWell(
+            child: myItems("CONTRAST DETAILS", 'lib/jpg/contrast.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/vid_chest');
+            },
+          ),
+          InkWell(
+            child: myItems("TROUSERS", 'lib/jpg/trousers.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/vid_intro');
+            },
+          ),
+          InkWell(
+            child: myItems("SHIRTS", 'lib/jpg/shirts.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Camisa');
+            },
+          ),
+          InkWell(
+            child: myItems("SHIRT DETAILS", 'lib/jpg/shirtdetail.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Camisa');
+            },
+          ),
+          InkWell(
+            child: myItems("VEST", 'lib/jpg/vests.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Camisa');
+            },
+          ),
+          InkWell(
+            child: myItems("CEREMONY", 'lib/jpg/ceremony.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Camisa');
+            },
+          ),
+          InkWell(
+            child: myItems("CASUAL", 'lib/jpg/casual.jpg'),
+            onTap: () {
+              Navigator.of(context).pushNamed('/Camisa');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
