@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:harris/src/pages/home_screen.dart';
+import 'package:harris/src/pages/lining_page.dart';
+import 'package:harris/src/pages/suits_page.dart';
+import 'package:harris/src/pages/tablas.dart';
+import 'package:harris/src/pages/video_chest.dart';
+import 'package:harris/src/pages/video_introduction.dart';
+import 'package:harris/src/pages/components/measures.dart';
+
+
+//import 'package:harris/src/pages/slideshow_page.dart';
+
+//import 'package:harris/src/labs/slideshow_page1.dart';
+
+void main() =>  runApp(MyApp());
+
+
+class MyApp extends StatelessWidget {
+ 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      routes: {
+        '/Lining': (context) => Lining_Page(),
+        '/Suits': (context) => Suits_Page(),
+        '/vid_chest': (context) => Video_chest_Page(),
+        '/vid_intro' : (context) => Video_intro_Page(),
+        '/tablas':(context) => Table_Page(),
+        '/videos' :(context) => DashboardVideo(),
+        
+      },
+      
+      
+      debugShowCheckedModeBanner: false,
+      title: 'Harris & Frank',
+      home: HomeScreen(),
+      //DashboardVideo(),
+      //HomeScreen(),
+    );
+  }
+}
