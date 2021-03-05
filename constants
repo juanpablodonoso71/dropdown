@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+
+
+//const textoIntro = TextStyle (fontSize: 35, fontFamily:'Anton');
+
+const textoIntroSeg = TextStyle (fontSize: 28, fontFamily:'Myriad', color: Colors.white);
+
+
+class MyTextStyle extends TextStyle {
+  final Color color;
+  final FontWeight fontWeight;
+  final double fontSize;
+  final String fontFamily;
+
+  const MyTextStyle({
+    this.color = Colors.white,
+    this.fontWeight = FontWeight.w500,
+    this.fontSize =45,
+    this.fontFamily = 'Anton'
+    
+  });
+   
+ 
+}
