@@ -1,0 +1,195 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_app/constants.dart';
+
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: PageView(
+        children: <Widget>[
+          MyHomePage(),
+          Page1(),
+        ],
+      ),
+      routes: {
+        Page1.routeName: (BuildContext context) => Page1(),
+        Page2.routeName: (BuildContext context) => Page2(),
+      },
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('TESTEO'),
+      ),
+      drawer: _crearMenu(context),
+      body: PageView(
+        children: <Widget>[
+          Stack(
+            children: [
+              Center(
+                child: Container(
+                  height: 300,
+                  width: 300,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.orange),
+                ),
+              ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'HOLA MUNDO',
+                      style: MyTextStyle(),
+                    ),
+                    Text('Tecnologías Visuales', style: textoIntroSeg),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Page2(),
+          Page1(),
+        ],
+      ),
+    );
+  }
+
+  Drawer _crearMenu(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            child: Container(),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('lib/jpg/logo.png'),
+              ),
+            ),
+          ),
+          ListTile(
+              leading: Icon(Icons.access_alarm, color: Colors.blue),
+              title: Text('Page 1'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, Page1.routeName);
+              }),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.home, color: Colors.blue),
+            title: Text('Page 2'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, Page2.routeName);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Page1 extends StatefulWidget {
+  static final String routeName = 'page1';
+
+  @override
+  _Page1State createState() => _Page1State();
+}
+
+class _Page1State extends State<Page1> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Stack(
+        children: [
+          Center(
+            child: Container(
+              height: 100,
+              width: 100,
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.lime),
+            ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'PAGINA 0',
+                  style: MyTextStyle(),
+                ),
+                Text('Tecnologías Visuales', style: textoIntroSeg),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+
+    // This trailing comma makes auto-formatting nicer for build methods.
+  }
+}
+
+class Page2 extends StatefulWidget {
+  static final String routeName = 'page2';
+
+  @override
+  _Page2State createState() => _Page2State();
+}
+
+class _Page2State extends State<Page2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Stack(
+        children: [
+          Center(
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+            ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'PAGINA 2',
+                  style: MyTextStyle(),
+                ),
+                Text('Tecnologías Visuales', style: textoIntroSeg),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+
+    // This trailing comma makes auto-formatting nicer for build methods.
+  }
+}
